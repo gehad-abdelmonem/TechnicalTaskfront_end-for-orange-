@@ -1,0 +1,40 @@
+
+<h3 class="text-center my-4 text-secondary">Customer List</h3>
+
+<table class=" table table-striped table-bordered  w-75 mx-auto">
+	<thead>
+		<tr>
+			<th class="text-center" class="p-3" scope="col">#</th>
+			<th class="text-center" scope="col">CustomerName</th>
+			<th class="text-center" scope="col">Service</th>
+			<th class="text-center" scope="col">contractDate</th>
+			<th class="text-center" scope="col">contractExpiryDate</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let customer of customerList">
+			<th >{{customer.id}}</th>
+			<td class="text-center">{{customer.customerName}}</td>
+			<td class="text-center">{{customer.service}}</td>
+			<td class="text-center">{{customer.contractDate|date:'MM/dd/yyyy'}}</td>
+			<td class="text-center">{{customer.contractExpiryDate|date:'MM/dd/yyyy'}}</td>
+		</tr>
+	</tbody>
+	
+</table>
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="p-0 mt-4 text-sm col-6  ">
+			<ngb-pagination [(page)]="customerparams.pageNumber"
+			[pageSize]="customerparams.pageSize"
+			[collectionSize]="totalCount"
+			[maxSize]="5"  
+			[rotate]="true"  
+			[boundaryLinks]="true" 
+			[ellipses]="true" 
+			(pageChange)="onPageChange($event)" />
+		</div>
+	</div>
+</div>
+
+
